@@ -17,5 +17,5 @@ FOUNDATION_EXPORT const unsigned char FDFaceDetectVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <FDFaceDetect/PublicHeader.h>
 
 #import <FDFaceDetect/FDFaceLoginViewController.h>
-#import <FDFaceDetect/FDFaceRegisterViewController.h>
+#import <FDFaceDetect/FDFaceLogin2ViewController.h>
 

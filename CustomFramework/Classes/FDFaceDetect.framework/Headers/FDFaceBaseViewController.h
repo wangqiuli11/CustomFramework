@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "FDResult.h"
 #import "NSString+RemoveSpace.h"
 
 #define FDSCREEN_WIDTH   [[UIScreen mainScreen] bounds].size.width
@@ -23,30 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface FDFaceBaseViewController : UIViewController
 
-@property(nonatomic,copy)void(^callBack)(FDResult *result);//回调
+@property(nonatomic,copy)void(^callBack)(NSString *base64Str);//回调
+@property(nonatomic,copy)void(^cancelPhotoCallBack)(void);//取消回调
 
 /**
  提示弹窗
  @param message 提示信息
  */
 - (void)addAlert:(NSString *)message withCallBack:(void(^)(void))sure;
-
-/**
- POST请求
- @param url 请求的url（完整的url）
- @param param 请求的参数
- @param success 成功的回调
- @param failure 失败的回调
- */
--(void)post:(NSString *)url withParam:(id )param success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
-
--(void)post:(NSString *)url withParam:(id)param withFile:(NSArray *)filesArray success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
-
-/**
- callBack
- @param dict 状态描述
- */
-- (void)setCallBackWithDict:(NSDictionary *)dict;
 
 /**
  设置导航栏颜色
@@ -58,27 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  data转base64
- @param imageData data
+ @param data data
  @return base64码
  */
-- (NSString*)encodeToBase64String:(NSData*)imageData;
-
-/**
- 弹出加载动画
- @param text 描述
- */
--(void)showLoading:(NSString*)text;
-
-/**
- 隐藏加载动画
- */
--(void)hideLoading;
-
-/**
- 提示弹窗
- @param text 描述
- */
--(void)toast:(NSString*)text;
+- (NSString*)encodeToBase64String:(NSData*)data;
 
 /**
  设置扫描层
@@ -94,6 +60,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 获取当前版本
 - (NSString *)getCurrentVersion;
+
+- (BOOL)isiPhoneX;
+
+//计算模糊程度（小于500认为是模糊图，这个值可以自己看情况定义）
+- (double)getImageDimValue:(UIImage *)sourceImage;
 
 @end
 
