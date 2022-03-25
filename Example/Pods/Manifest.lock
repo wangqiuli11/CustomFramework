@@ -1,0 +1,16 @@
+PODS:
+  - CustomFramework (0.1.0)
+
+DEPENDENCIES:
+  - CustomFramework (from `../`)
+
+EXTERNAL SOURCES:
+  CustomFramework:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CustomFramework: 5a7035d310177d9750496519d072d664a25c9d0a
+
+PODFILE CHECKSUM: 97293c5c7150afe0b597660ba5453716e59cc56a
+
+COCOAPODS: 1.11.3
